@@ -1,0 +1,1587 @@
+/* Fuentes externas: Montserrat para títulos y botones, Open Sans para texto de párrafos y menús */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* Librería de iconos FontAwesome para íconos de teléfono, email y redes sociales */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Definición de variables globales para colores y fuentes */
+:root {
+    --color-white: #ffffff; /* Color blanco */
+    --color-black: #000000; /* Color negro */
+    --color-primary: #2972FF; /* Color primario principal */
+    --color-primary-hover: #1f5ac8; /* Color primario para estados hover */
+    --color-secondary: #FFC300; /* Color secundario */
+    --color-dark: #0a1f44; /* Color oscuro, usado para fondos o texto */
+    --color-gray-lighter: #F2F2F2; /* Gris muy claro */
+    --color-gray-lightest: #f9f9f9; /* Gris el más claro, casi blanco */
+    --color-gray-medium: #999999; /* Gris medio */
+    --color-gray: #555555; /* Gris estándar */
+    --color-gray-dark: #333333; /* Gris oscuro */
+    --overlay-black-50: rgba(0, 0, 0, 0.5); /* Superposición negra con 50% opacidad */
+    --overlay-black-40: rgba(0, 0, 0, 0.4); /* Superposición negra con 40% opacidad */
+    --overlay-white-50: rgba(255, 255, 255, 0.5); /* Superposición blanca con 50% opacidad */
+    --overlay-white-10: rgba(255, 255, 255, 0.1); /* Superposición blanca con 10% opacidad */
+
+    --font-primary: 'Montserrat', sans-serif; /* Fuente principal para encabezados y elementos destacados */
+    --font-secondary: 'Open Sans', sans-serif; /* Fuente secundaria para el cuerpo del texto */
+}
+
+/* Reset básico y estilos base para el documento */
+* {
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina paddings por defecto */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto total del elemento */
+}
+html, body {
+    font-family: var(--font-secondary); /* Establece la fuente secundaria por defecto */
+    color: var(--color-white); /* Color de texto por defecto (puede ser sobrescrito) */
+    scroll-behavior: smooth; /* Habilita el desplazamiento suave al hacer clic en enlaces internos */
+}
+/* Estilos para encabezados, botones y enlaces de navegación, usando la fuente primaria */
+h1, h2, h3, h4, h5, h6,
+.btn,
+nav a {
+    font-family: var(--font-primary);
+}
+/* Contenedor principal para centrar contenido y limitar su ancho */
+.container {
+    width: 90%; /* Ancho del contenedor */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Definiciones de Keyframes para animaciones CSS */
+@keyframes fadeIn {
+    from { opacity: 0; } /* Estado inicial: totalmente transparente */
+    to { opacity: 1; }   /* Estado final: totalmente opaco */
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); } /* Inicial: transparente y desplazado hacia abajo */
+    to { opacity: 1; transform: translateY(0); }    /* Final: opaco y en su posición original */
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); } /* Inicial: transparente y desplazado hacia arriba */
+    to { opacity: 1; transform: translateY(0); }     /* Final: opaco y en su posición original */
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); } /* Inicial: transparente y desplazado a la izquierda */
+    to { opacity: 1; transform: translateX(0); }      /* Final: opaco y en su posición original */
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); } /* Inicial: transparente y desplazado a la derecha */
+    to { opacity: 1; transform: translateX(0); }     /* Final: opaco y en su posición original */
+}
+
+@keyframes scaleUp {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); } /* Inicial: transparente, escalado pequeño y desplazado */
+    to { opacity: 1; transform: scale(1) translateY(0); }        /* Final: opaco, tamaño normal y en posición */
+}
+
+/* Estilos para la barra superior fija */
+.top-bar {
+    position: fixed; /* Fija la barra en la parte superior de la ventana */
+    top: 0; /* Alinea en la parte superior */
+    width: 100%; /* Ocupa todo el ancho */
+    z-index: 200; /* Asegura que esté por encima de otros elementos */
+    background: var(--color-dark); /* Color de fondo oscuro */
+    color: var(--color-white); /* Color de texto blanco */
+    font-size: 0.9rem; /* Tamaño de fuente pequeño */
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    height: 40px; /* Altura de la barra */
+    opacity: 0; /* Inicialmente transparente para animación */
+    animation: fadeInDown 0.5s ease-out 0.1s forwards; /* Animación de aparición */
+}
+
+/* Contenedor dentro de la barra superior */
+.top-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0; /* Relleno vertical */
+}
+
+/* Estilos para los enlaces sociales en la barra superior */
+.top-bar .social-links a {
+    margin-left: 15px; /* Margen a la izquierda de cada ícono */
+    color: var(--color-white);
+    transition: color 0.2s, transform 0.2s; /* Transición suave para color y transformación */
+}
+.top-bar .social-links a:hover {
+    color: var(--color-secondary); /* Cambia el color al pasar el mouse */
+    transform: translateY(-2px); /* Eleva ligeramente el ícono */
+}
+
+/* Estilos para la información de contacto en la barra superior */
+.contact-info a {
+    color: #ffffff;
+    text-decoration: none; /* Sin subrayado */
+    margin-right: 15px; /* Margen a la derecha */
+    display: inline-flex; /* Permite alinear ícono y texto */
+    align-items: center;
+    gap: 5px; /* Espacio entre ícono y texto */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+.contact-info a:hover {
+    color: var(--color-secondary); /* Cambia el color al pasar el mouse */
+}
+
+
+/* Estilos para el encabezado principal (logo y navegación) */
+#site-header {
+    position: fixed; /* Fija el encabezado */
+    top: 40px; /* Posicionado debajo de la barra superior */
+    width: 100%;
+    background: var(--color-dark);
+    z-index: 150; /* Por debajo de la top-bar pero encima del contenido */
+    opacity: 0;
+    animation: fadeInDown 0.5s ease-out 0.3s forwards; /* Animación de aparición */
+}
+
+/* Línea decorativa debajo del encabezado */
+#site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--overlay-white-50); /* Línea semitransparente */
+    z-index: 101;
+}
+
+/*ESTILOS PARA PERSONALIZAR LA BARRA DE NAVEGACION
+Y LA BARRA DE MENUS*/
+.nav-menu {
+    flex-direction: row;
+    list-style-type: none;
+    display: flex;   
+    gap: 5px;
+}
+.nav-menu-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--color-dark);
+    padding: 5px 10px;
+    transition: all 0.4s ease-in-out;
+}
+/* Elementos individuales del menú */
+.nav-menu-item {
+    margin-left: 10px;
+}
+
+/* Contenedor de la navegación dentro del encabezado */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0; /* Relleno vertical */
+    border-bottom: none; /* Sin borde inferior, se usa ::after */
+}
+
+/* Estilos del logo */
+.nav-container .logo img {
+    max-height: 50px; /* Altura máxima del logo */
+    width: auto; /* Ancho automático para mantener proporción */
+    display: block;
+    transition: transform 0.3s ease; /* Transición para efecto hover */
+}
+.nav-container .logo:hover img {
+    transform: scale(1.05); /* Agranda ligeramente el logo al pasar el mouse */
+}
+
+/* Estilos de la lista de navegación */
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex; /* Elementos en línea */
+    gap: 30px; /* Espacio entre elementos de la lista */
+}
+
+/* Estilos de los enlaces de navegación */
+nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative; /* Para el subrayado animado */
+    transition: color 0.3s ease;
+}
+nav a:hover,
+nav a.active { /* Estilo para enlace activo o en hover */
+    color: var(--color-secondary);
+}
+
+/* Subrayado animado para enlaces de navegación */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Posición debajo del texto */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-secondary); /* Color del subrayado */
+    transform: scaleX(0); /* Inicialmente invisible (escalado a 0) */
+    transition: transform 0.3s ease-out; /* Animación de la transformación */
+    transform-origin: left; /* Origen de la transformación a la izquierda */
+}
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1); /* Muestra el subrayado al pasar el mouse o si está activo */
+}
+
+/*BOTON HAMBURGUESA*/
+.menu-toggle {
+    display: none; /*oculta el icono en la ventana grande*/
+    cursor: pointer;
+    font-size: 2em;
+}
+
+/*Estilo que se ejecutara desde Javascript para mostrar u ocultar
+la barra de menu, cuando le haga clic en el boton hamburguesa*/
+.nav-menu.active {
+    display: flex;
+}
+
+/*FIN DE LOS ESTILOS DE LA BARRA DE NAVEGACION*/
+
+.page-section {
+    padding-top: 130px; /* Suma de la top-bar (40px) + header (70px) + un extra de 20px */
+    padding-bottom: 60px; /* Espacio inferior para que no termine abruptamente en el footer */
+}
+
+
+/* Estilos para la sección "Hero" (principal de bienvenida) */
+.hero {
+    padding-top: calc(40px + 70px); /* Relleno superior para compensar la altura de top-bar y header */
+    margin-top: 0; /* Sin margen superior */
+    height: 100vh; /* Ocupa toda la altura de la ventana gráfica */
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    position: relative; /* Para posicionar elementos hijos absolutamente */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+}
+
+/* Estilos para la imagen de fondo de la sección hero */
+.hero-img {
+    position: absolute; /* Posicionamiento absoluto respecto a .hero */
+    top: 50%;
+    left: 50%;
+    min-width: 100%; /* Asegura que cubra todo el ancho */
+    min-height: 100%; /* Asegura que cubra toda la altura */
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%); /* Centra la imagen */
+    object-fit: cover; /* Cubre el área manteniendo la relación de aspecto, puede recortar */
+    z-index: 0; /* Detrás del contenido de hero */
+}
+
+/* Superposición oscura sobre el video para mejorar legibilidad del texto */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-black-50); /* Fondo negro semitransparente */
+    z-index: 1; /* Encima de la imagen, debajo del contenido */
+}
+
+/* Contenido textual de la sección hero */
+.hero-content {
+    position: relative; /* Para estar por encima de la superposición */
+    z-index: 2; /* Encima de .hero::before */
+    color: var(--color-white); /* Color de texto blanco */
+    text-align: left; /* Alineación del texto a la izquierda */
+    width: 100%;
+}
+.hero-content h1 {
+    font-size: 4rem; /* Tamaño grande para el título principal */
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards; /* Animación de aparición */
+}
+/* Estilos generales para botones */
+.btn {
+    display: inline-block; /* Comportamiento de bloque en línea */
+    background: var(--color-white); /* Fondo blanco */
+    color: var(--color-dark); /* Texto oscuro */
+    padding: 12px 30px; /* Relleno interno */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 50px; /* Bordes redondeados para forma de píldora */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+.btn:hover {
+    background-color: var(--color-primary); /* Cambia fondo al pasar el mouse */
+    color: var(--color-white); /* Cambia texto al pasar el mouse */
+    transform: translateY(-3px); /* Eleva ligeramente el botón */
+}
+/* Botón específico en la sección hero con animación */
+.hero-content .btn {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.8s forwards; /* Animación con retraso */
+}
+
+/* Estilos para la sección "Nosotros" */
+.nosotros {
+    background-image: url('/assets/img/nosotros/sol.png');
+    background-color: var(--color-dark);
+    background-size: cover;
+    /* AJUSTE: Cambiamos la posición vertical a 130% para bajar la imagen.
+       Puedes experimentar con este valor (ej. 120%, 150%) hasta que te guste. */
+    background-position: center 55%;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.nosotros::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 31, 68, 0.8);
+    z-index: 1;
+}
+
+.nosotros-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-white);
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.nosotros-content h2 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+.nosotros-content p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+/* AJUSTE: Añade un margen superior al segundo párrafo para separarlos */
+.nosotros-content p + p {
+    margin-top: 1.5em;
+    animation-delay: 0.7s; /* Retrasamos la animación del segundo párrafo */
+}
+
+/* Estilos para la sección "Servicios" */
+.servicios {
+    padding: 100px 0 200px; /* Relleno vertical amplio */
+    background: var(--color-white); /* Fondo blanco */
+    color: var(--color-black); /* Texto negro */
+    overflow: hidden;
+}
+/* Título de la sección "Servicios" */
+.servicios h2 {
+    font-size: 3rem;
+    text-align: center; /* Título centrado */
+    color: var(--color-primary);
+    margin-bottom: 100px; /* Espacio debajo del título */
+    position: relative; /* Para la línea decorativa */
+    opacity: 0;
+    animation: fadeInDown 0.7s ease-out 0.2s forwards;
+}
+/* Línea decorativa encima del título de servicios */
+.servicios h2::before {
+    content: '';
+    position: absolute;
+    top: -20px; /* Posición encima del texto */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la línea */
+    width: 200px;
+    height: 5px;
+    background: var(--color-secondary); /* Color secundario para la línea */
+}
+/* Cuadrícula para mostrar los servicios */
+.servicios-grid {
+    display: flex; /* Layout horizontal */
+    gap: 30px; /* Espacio entre tarjetas de servicio */
+    align-items: flex-end; /* Alinea las tarjetas en la parte inferior */
+}
+/* Estilo para cada tarjeta de servicio */
+.servicio {
+    background: transparent !important; /* Fondo transparente, podría haber herencia */
+    position: relative; /* Para superposición de texto e imagen */
+    flex: 1; /* Distribuye el espacio equitativamente */
+    overflow: hidden; /* Oculta partes de la imagen que se desbordan en hover */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    opacity: 0;
+    animation: scaleUp 0.6s ease-out forwards; /* Animación de aparición con escalado */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out; /* Transiciones suaves */
+}
+.servicio:hover {
+    transform: translateY(-10px) scale(1.02); /* Eleva y agranda la tarjeta */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Añade sombra */
+}
+/* Alturas específicas para las tarjetas de servicio para un efecto escalonado */
+.servicio:nth-child(1) { height: 500px; animation-delay: 0.3s; }
+.servicio:nth-child(2) { height: 550px; animation-delay: 0.5s; } /* Tarjeta central más alta */
+.servicio:nth-child(3) { height: 500px; animation-delay: 0.7s; }
+
+/* Imagen dentro de la tarjeta de servicio */
+.servicio img {
+    width: 100%;
+    display: block;
+    object-fit: cover; /* Cubre el contenedor manteniendo relación de aspecto */
+    height: 100% !important; /* Ocupa toda la altura de la tarjeta */
+    filter: brightness(0.8); /* Oscurece ligeramente la imagen */
+    transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+.servicio:hover img {
+    filter: brightness(0.6); /* Oscurece más la imagen al pasar el mouse */
+    transform: scale(1.05); /* Agranda la imagen */
+}
+/* Capa de superposición sobre la imagen */
+.servicio .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-black-40); /* Superposición negra al 40% */
+    transition: background-color 0.4s ease-out;
+}
+.servicio:hover .overlay {
+    background: var(--overlay-black-50); /* Superposición más oscura al pasar el mouse */
+}
+/* Texto (título y descripción) dentro de la tarjeta de servicio */
+.servicio h3, .servicio p {
+    position: absolute; /* Posicionado sobre la imagen/superposición */
+    left: 20px; /* Margen izquierdo */
+    color: var(--color-white);
+    z-index: 2; /* Encima de la superposición */
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(15px); /* Desplazado hacia abajo */
+    transition: opacity 0.4s ease-out 0.1s, transform 0.4s ease-out 0.1s; /* Animación de aparición */
+}
+.servicio h3 {
+    bottom: 50px; /* Posición desde abajo */
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+.servicio p {
+    bottom: 20px; /* Posición desde abajo */
+    font-size: 1rem;
+    text-transform: capitalize; /* Primera letra en mayúscula */
+}
+/* Muestra el texto al pasar el mouse sobre la tarjeta */
+.servicio:hover h3, .servicio:hover p {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+/* Retraso en la animación del párrafo para efecto escalonado */
+.servicio:hover p {
+    transition-delay: 0.2s;
+}
+
+
+/* Estilos para la sección "Proyectos" */
+.proyectos {
+    padding: 100px 0;
+    background: var(--color-gray-lighter); /* Fondo gris claro */
+    overflow: hidden;
+}
+/* Título de la sección "Proyectos" */
+.proyectos h2 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    display: inline-flex; /* Para alinear con la flecha */
+    align-items: center;
+    gap: 10px; /* Espacio entre título y flecha */
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-primary);
+    width: fit-content;
+    opacity: 0;
+    animation: fadeInLeft 0.7s ease-out 0.2s forwards;
+}
+.proyectos h2:hover {
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+/* Flecha decorativa junto al título */
+.proyectos .arrow {
+    font-size: 2rem;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+.proyectos h2:hover .arrow {
+    transform: translateX(10px); /* Mueve la flecha a la derecha en hover */
+}
+
+/* Contenedor para la tabla, permite scroll horizontal en pantallas pequeñas */
+.table-responsive {
+    margin: 0 auto; /* Centra la tabla si es más angosta que el contenedor */
+    overflow-x: auto; /* Habilita scroll horizontal */
+    padding: 20px 0; /* Espacio para que la sombra no se corte */
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out 0.4s forwards;
+}
+
+/* Estilos de la tabla de proyectos */
+.table-responsive table {
+    width: 100%; /* Ocupa todo el ancho disponible en .table-responsive */
+    border-collapse: collapse; /* Fusiona los bordes de las celdas */
+    min-width: 600px; /* Ancho mínimo antes de que aparezca el scroll */
+    background: var(--color-white);
+    border-radius: 8px; /* Bordes redondeados para la tabla */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave */
+    overflow: hidden; /* Para que el border-radius afecte a las esquinas */
+}
+
+/* Estilos para las celdas de encabezado (th) */
+.table-responsive th {
+    background: var(--color-primary); /* Fondo de color primario */
+    color: var(--color-white); /* Texto blanco */
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Estilos para las celdas de datos (td) */
+.table-responsive td {
+    padding: 12px 15px;
+    color: var(--color-black); /* Texto negro */
+}
+
+/* Borde izquierdo para celdas (excepto la primera de cada fila) */
+.table-responsive th + th,
+.table-responsive td + td {
+    border-left: 1px solid var(--color-gray-lighter);
+}
+
+/* Fondo alterno para filas pares en el cuerpo de la tabla (efecto cebra) */
+.table-responsive tbody tr:nth-child(even) {
+    background: var(--color-gray-lightest);
+}
+
+/* Transición para efecto hover en filas */
+.table-responsive tbody tr {
+    transition: background-color 0.25s ease;
+}
+.table-responsive tbody tr:hover {
+    background: rgba(41, 114, 255, 0.1); /* Color de fondo primario con opacidad */
+}
+
+/* Estilos responsivos para la tabla en pantallas pequeñas (menos de 600px) */
+@media (max-width: 600px) {
+    /* Convierte la tabla en un layout de bloques */
+    .table-responsive table,
+    .table-responsive thead {
+        display: block;
+    }
+    .table-responsive tbody tr {
+        display: block; /* Cada fila como un bloque */
+        margin-bottom: 1rem; /* Espacio entre "filas" */
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    /* Oculta los encabezados de tabla tradicionales */
+    .table-responsive th {
+        display: none;
+    }
+    /* Estilo para las celdas, ahora se muestran como pares de "etiqueta: valor" */
+    .table-responsive td {
+        display: flex; /* Para alinear la etiqueta y el valor */
+        justify-content: space-between; /* Etiqueta a la izquierda, valor a la derecha */
+        padding: 10px;
+        border-bottom: 1px solid var(--color-gray-lighter);
+    }
+    /* Añade la etiqueta (data-label) antes del contenido de la celda */
+    .table-responsive td::before {
+        content: attr(data-label); /* Obtiene el texto de data-label del HTML */
+        font-weight: 600;
+        color: var(--color-gray-dark);
+    }
+    /* Quita el borde inferior de la última celda "virtual" de cada bloque */
+    .table-responsive td:last-child {
+        border-bottom: none;
+    }
+}
+
+
+/* Estilos para la sección de video */
+.proyecto-video {
+    /* Añadimos un margen superior para separarlo de la tabla */
+    margin-top: 60px;
+    text-align: center; /* Centramos el título */
+}
+
+.proyecto-video h2 {
+    /* Usamos el mismo estilo de los otros títulos de sección */
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.proyecto-video .video-wrapper {
+    /* Estilos para el contenedor del video */
+    max-width: 700px;
+    margin: 0 auto; /* Centramos el video */
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.proyecto-video .video-video {
+    width: 100%;
+    display: block; /* Evita espacios extra */
+}
+
+
+/* Estilos para la sección "Empresa" (Ubicación) */
+.empresa {
+    padding: 100px 0;
+    background: var(--color-white);
+    color: var(--color-black);
+    overflow: hidden;
+}
+/* Cuadrícula para la información de la empresa y la ubicación */
+.empresa-grid {
+    display: flex; /* Layout de dos columnas */
+    gap: 50px;
+    align-items: center; /* Centra verticalmente el contenido de las columnas */
+}
+/* Columna de información de la empresa (logo y texto) */
+.empresa-info {
+    flex: 1;
+    text-align: center; /* Centra el logo y el texto */
+    opacity: 0;
+    animation: fadeInLeft 0.7s ease-out 0.3s forwards;
+}
+.empresa-logo {
+    max-width: 250px; /* Ancho máximo del logo */
+    margin-bottom: 20px;
+}
+.empresa-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+/* Columna de ubicación (dirección y horario) */
+.ubicacion {
+    flex: 1;
+    background: var(--color-primary); /* Fondo de color primario */
+    color: var(--color-white); /* Texto blanco */
+    padding: 40px; /* Relleno interno */
+    text-align: center;
+    border-radius: 10px; /* Bordes redondeados */
+    opacity: 0;
+    animation: fadeInRight 0.7s ease-out 0.5s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ubicacion:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta */
+    box-shadow: 0 10px 20px rgba(41, 114, 255, 0.3); /* Sombra con color primario */
+}
+.ubicacion h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.ubicacion .direccion {
+    font-size: 2rem; /* Dirección destacada */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.ubicacion h4 { /* Para "HORARIO" */
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.ubicacion p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Contenedor del mapa de Google */
+.map-container {
+    margin: 40px auto 0; /* Margen superior y centrado */
+    max-width: 1200px; /* Ancho máximo del mapa */
+    border-radius: 12px; /* Bordes redondeados */
+    overflow: hidden; /* Para que el iframe respete el border-radius */
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.7s forwards;
+}
+.map-container iframe {
+    width: 100%; /* Ancho completo del contenedor */
+    height: 400px; /* Altura del mapa */
+    border: none; /* Sin borde */
+}
+
+/* Estilos para la sección "Testimonios" */
+.testimonios {
+    padding: 100px 0;
+    background: var(--color-dark); /* Fondo oscuro */
+    color: var(--color-white); /* Texto blanco */
+    overflow: hidden;
+}
+/* Título de la sección "Testimonios" */
+.testimonios h2 {
+    font-size: 3rem;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeInLeft 0.7s ease-out 0.2s forwards;
+}
+.testimonios h2 .arrow {
+    transition: transform 0.3s ease;
+}
+.testimonios h2:hover .arrow {
+    transform: translateX(10px);
+}
+/* Cuadrícula para las tarjetas de testimonio */
+.testimonios-grid {
+    display: flex; /* Layout horizontal */
+    gap: 30px; /* Espacio entre testimonios */
+}
+/* Estilo para cada tarjeta de testimonio */
+.testimonio {
+    background: var(--overlay-white-10); /* Fondo blanco semitransparente */
+    padding: 30px;
+    border-radius: 10px;
+    flex: 1; /* Distribuye el espacio */
+    display: flex;
+    flex-direction: column; /* Alinea contenido verticalmente */
+    justify-content: space-between; /* Distribuye espacio entre cita y autor */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards; /* Animación de aparición */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonio:hover {
+    transform: translateY(-8px); /* Eleva la tarjeta */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+}
+/* Retrasos en la animación para las tarjetas de testimonio */
+.testimonio:nth-child(1) { animation-delay: 0.3s; }
+.testimonio:nth-child(2) { animation-delay: 0.5s; }
+.testimonio:nth-child(3) { animation-delay: 0.7s; }
+
+/* Estilo para la cita dentro del testimonio */
+.testimonio blockquote {
+    font-style: italic; /* Texto en cursiva */
+    position: relative; /* Para las comillas decorativas */
+    padding-top: 40px; /* Espacio para las comillas */
+    padding-left: 10px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+/* Comillas decorativas para la cita */
+.testimonio blockquote::before {
+    content: '“'; /* Comilla de apertura */
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3rem; /* Tamaño grande para la comilla */
+    color: var(--color-primary);
+    z-index: 2;
+}
+/* Contenedor para la información del autor del testimonio */
+.autor {
+    display: flex;
+    align-items: center; /* Alinea imagen y texto del autor */
+    gap: 15px; /* Espacio entre imagen y texto */
+}
+.autor img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Imagen redonda */
+    border: 2px solid var(--color-primary); /* Borde con color primario */
+}
+.autor div h4 { /* Nombre del autor */
+    margin-bottom: 5px;
+}
+.autor div p { /* Calificación (estrellas) */
+    color: var(--color-secondary);
+    font-size: 1rem;
+}
+
+/* Estilos para la sección "Equipo" */
+.equipo {
+    padding: 100px 0;
+    background: var(--color-gray-lightest); /* Fondo gris muy claro */
+    color: var(--color-black); /* Texto negro */
+    overflow: hidden;
+}
+/* Título de la sección "Equipo" */
+.equipo h2 {
+    font-size: 3rem;
+    color: var(--color-dark); /* Texto oscuro */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeInLeft 0.7s ease-out 0.2s forwards;
+}
+.equipo h2 .arrow {
+    transition: transform 0.3s ease;
+}
+.equipo h2:hover .arrow {
+    transform: translateX(10px);
+}
+/* Cuadrícula para los miembros del equipo */
+.equipo-grid {
+    display: flex;
+    gap: 30px;
+}
+/* Estilo para cada tarjeta de miembro del equipo */
+.miembro {
+    text-align: center; /* Centra imagen y texto */
+    flex: 1;
+    opacity: 0;
+    animation: scaleUp 0.6s ease-out forwards; /* Animación de escalado */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.miembro:hover {
+    transform: translateY(-8px) scale(1.02); /* Eleva y agranda */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Sombra */
+}
+/* Retrasos en la animación para las tarjetas de miembro */
+.miembro:nth-child(1) { animation-delay: 0.3s; }
+.miembro:nth-child(2) { animation-delay: 0.5s; }
+.miembro:nth-child(3) { animation-delay: 0.7s; }
+
+/* Imagen del miembro del equipo */
+.miembro img {
+    width: 100%;
+    height: 300px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Cubre el espacio manteniendo proporciones */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.miembro:hover img {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    transform: scale(1.03); /* Agranda ligeramente la imagen */
+}
+/* Nombre del miembro del equipo */
+.miembro h4 {
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+/* Cargo o especialidad del miembro */
+.miembro p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
+
+/* Estilos para la sección "Formulario de Contacto" */
+.contacto {
+    background: var(--color-dark); /* Fondo oscuro */
+    color: var(--color-white); /* Texto blanco */
+    padding: 80px 0;
+    overflow: hidden;
+}
+/* Título del formulario de contacto */
+.contacto h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative; /* Para la línea decorativa */
+    opacity: 0;
+    animation: fadeInDown 0.7s ease-out 0.2s forwards;
+}
+/* Línea decorativa encima del título del formulario */
+.contacto h2::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--color-secondary);
+}
+/* Estructura del formulario, usando grid para alinear campos */
+.contact-form {
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario */
+    display: grid; /* Usar CSS Grid para el layout */
+    gap: 20px; /* Espacio entre campos del formulario */
+}
+/* Grupo de campo de formulario (label + input) */
+.form-group {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards; /* Animación de aparición para cada grupo */
+}
+/* Retrasos de animación para cada grupo de campo */
+.form-group:nth-of-type(1) { animation-delay: 0.3s; }
+.form-group:nth-of-type(2) { animation-delay: 0.4s; }
+.form-group:nth-of-type(3) { animation-delay: 0.5s; }
+.form-group:nth-of-type(4) { animation-delay: 0.6s; }
+.form-group:nth-of-type(5) { animation-delay: 0.7s; }
+.form-group:nth-of-type(6) { animation-delay: 0.8s; }
+.form-group.captcha       { animation-delay: 0.9s; } /* Campo captcha */
+.form-group.checkbox-group{ animation-delay: 1.0s; } /* Grupo de checkbox */
+
+
+/* Estilo para las etiquetas de los campos */
+.form-group label {
+    display: block; /* Ocupa toda la línea */
+    margin-bottom: 8px; /* Espacio debajo de la etiqueta */
+    font-weight: 500;
+}
+/* Estilo para los campos de entrada, textarea y select */
+.form-group input,
+.form-group textarea,
+.contact-form select {
+    width: 100%; /* Ocupan todo el ancho disponible */
+    padding: 14px 16px; /* Relleno interno */
+    border: 1px solid transparent; /* Borde inicial transparente */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1rem;
+    font-family: inherit; /* Hereda la fuente del cuerpo */
+    background-color: var(--color-gray-lightest); /* Fondo gris muy claro */
+    color: var(--color-gray-dark); /* Texto oscuro */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+/* Estilo para los campos cuando están en foco (seleccionados) */
+.form-group input:focus,
+.form-group textarea:focus,
+.contact-form select:focus {
+    outline: none; /* Quita el contorno por defecto del navegador */
+    border-color: var(--color-primary); /* Borde de color primario */
+    box-shadow: 0 0 0 3px rgba(41, 114, 255, 0.3); /* Sombra exterior suave */
+}
+
+/* Grupo para el checkbox de términos y condiciones */
+.checkbox-group {
+    display: flex; /* Alinea el checkbox y la etiqueta */
+    align-items: center;
+    gap: 10px; /* Espacio entre checkbox y etiqueta */
+    font-size: 0.9rem;
+}
+.checkbox-group input[type="checkbox"] {
+    width: auto; /* Ancho automático para el checkbox */
+    margin: 0; /* Sin margen */
+    accent-color: var(--color-primary); /* Color del checkbox cuando está marcado */
+}
+.checkbox-group label {
+    color: var(--color-white); /* Texto blanco para la etiqueta del checkbox */
+}
+.checkbox-group a { /* Enlaces dentro de la etiqueta del checkbox */
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+/* Estilo para el texto placeholder de los campos */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-gray-medium);
+}
+/* Botón de envío del formulario */
+.contact-form .btn {
+    display: block;
+    width: 100%;
+    max-width: 250px; /* Ancho máximo del botón */
+    margin: 10px auto 0; /* Margen superior y centrado */
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 14px 0; /* Relleno vertical */
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer; /* Cursor de mano */
+    transition: background 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 1.2s forwards; /* Animación con retraso */
+}
+.contact-form .btn:hover {
+    background: var(--color-primary-hover); /* Color de fondo en hover */
+    transform: translateY(-3px) scale(1.03); /* Eleva y agranda ligeramente */
+}
+
+/* Estilos para el pie de página (Footer) */
+.footer {
+    background: var(--color-dark);
+    color: var(--color-white);
+    padding: 60px 0 20px; /* Relleno vertical */
+    overflow: hidden;
+}
+/* Cuadrícula para los bloques del pie de página */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Columnas responsivas */
+    gap: 40px; /* Espacio entre bloques */
+    align-items: start; /* Alinea los bloques en la parte superior */
+}
+/* Estilo para cada bloque del pie de página */
+.footer-block {
+    padding: 0 20px; /* Relleno horizontal */
+    min-width: 220px; /* Ancho mínimo de cada bloque */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards; /* Animación de aparición */
+}
+/* Alineación y retrasos de animación para los bloques del footer */
+.footer-block:nth-child(1) { text-align: left; animation-delay: 0.2s; } /* Contacto */
+.footer-block:nth-child(2) { text-align: center; animation-delay: 0.4s; } /* Oficina Central */
+.footer-block:nth-child(3) { text-align: right; animation-delay: 0.6s; } /* Síguenos */
+
+/* Títulos dentro de los bloques del footer */
+.footer-block h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--color-secondary); /* Color secundario para los títulos */
+    text-transform: uppercase;
+}
+/* Párrafos y dirección en el footer */
+.footer-block p,
+.footer-block address {
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+/* Enlaces en el footer */
+.footer-block a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-block a:hover {
+    color: var(--color-secondary); /* Cambia a color secundario en hover */
+    text-decoration: underline; /* Subraya en hover */
+}
+/* Lista de redes sociales en el footer */
+.social-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.social-list li {
+    margin-bottom: 6px;
+    display: inline-block; /* Íconos en línea */
+    margin-right: 10px; /* Espacio entre íconos */
+}
+.social-list li:last-child {
+    margin-right: 0; /* Sin margen derecho para el último ícono */
+}
+.social-list a {
+    display: inline-block;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.social-list a:hover {
+    color: var(--color-secondary);
+    transform: scale(1.1) translateY(-2px); /* Agranda y eleva el ícono */
+}
+/* Parte inferior del footer (derechos de autor) */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px; /* Espacio sobre el texto de copyright */
+    font-size: 0.9rem;
+    opacity: 0.5; /* Texto ligeramente transparente */
+    animation: fadeIn 1s ease-out 1s forwards; /* Animación de aparición */
+}
+
+/* =========================================
+   BOTÓN SCROLL UP (VERSIÓN CORREGIDA Y FINAL)
+   ========================================= */
+
+/* --- ESTILOS GENERALES DEL BOTÓN --- */
+.scroll-up-btn {
+    /* Posición y Dimensiones */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    z-index: 1000;
+
+    /* Apariencia y Contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+
+    /* Propiedades para la animación de aparición */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease, background-color 0.3s ease;
+}
+
+/* --- ESTADOS DEL BOTÓN --- */
+
+/* 1. Estado Base Y Visitado: Color AZUL */
+/* Forzamos a que, incluso después de ser visitado, vuelva al color primario. */
+.scroll-up-btn,
+.scroll-up-btn:visited {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* 2. Estado Hover: Color AMARILLO */
+/* Se activa solo cuando el cursor está encima. */
+.scroll-up-btn:hover {
+    background-color: var(--color-secondary);
+}
+
+/* 3. Estado Focus: Mantiene el color AZUL */
+/* Para accesibilidad, sin que se quede pegado el color amarillo. */
+.scroll-up-btn:focus {
+    background-color: var(--color-primary);
+    /* Opcional: añade un borde visible cuando se navega con teclado */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* 4. Estado Active: Color AMARILLO (solo durante el clic) */
+.scroll-up-btn:active {
+    background-color: var(--color-secondary);
+    transform: scale(0.95);
+}
+
+
+/* --- CLASE PARA MOSTRAR EL BOTÓN (controlada por JS) --- */
+.scroll-up-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/*------------
+Breckpoints
+Adapatar a varios tamaños de pantalla
+----------*/
+
+/*Pantalla grandes (mas de 1200px)*/
+@media screen and (min-width:1200px) {
+    .container {
+        max-width: 1140px;
+    } 
+}
+
+/*Pantalla mediana(hasta 992px)*/
+@media screen and (max-width:992px) {
+    .hero-content {
+        padding: 0 40px; /* Ajusta según el espacio deseado */
+    }
+  
+    nav.container  {
+        max-width: 1100%;
+    }
+   
+    .nav-menu-item {
+        margin: 0;
+        text-align: center;
+    }
+    /*seccion nosotros*/
+    
+    .col-text {
+        margin-left: 6%;
+        flex: 1;
+    }
+    .nosotros-inner {
+        padding-top: 4%;
+        padding-bottom: 4%;
+    }
+    .col-title {
+        display: flex;
+        align-items: center;
+        
+    }
+    h2 span {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        
+    }
+    .container .empresa-grid{
+        transform:scale(0.8);   
+    }
+    /*Seccion ubicacion*/
+    .empresa-grid {
+        flex-direction: row; /* Asegura que siga siendo horizontal */
+        justify-content: center; /* Centra todo el bloque en pantalla */
+        gap: 30px; /* Reduce el espacio entre columnas */
+        transform: scale(0.97); /* Achica ligeramente todo */
+    }
+
+    .empresa-info {
+        text-align: center;
+    }
+
+    .empresa-logo {
+        max-width: 180px; /* Reduce el tamaño del logo */
+        margin-bottom: 10px;
+    }
+
+    .ubicacion {
+        padding: 30px; /* Reduce el padding del cuadro */
+    }
+
+    .ubicacion .direccion {
+        font-size: 1.5rem; /* Ajuste para pantallas medianas */
+    }
+
+     
+}
+/*Celulares grandes(hasta 768px)*/
+@media screen and (max-width:768px) {
+    .container .nav-container{
+        display: flex; /* Aseguramos que sea flex */
+        justify-content: space-between; /* Espacio entre logo y menú */
+        align-items: center; /* Centrado vertical */
+        padding: 10px 20px; /* Añadimos un poco de padding lateral */
+    }
+
+    /* AJUSTE PARA LA SUPERPOSICIÓN */
+    .top-bar {
+        flex-direction: column;
+        height: auto; /* Permite que la altura se ajuste al contenido */
+        padding: 8px 0;
+        gap: 5px;
+    }
+
+    #site-header {
+        /* Se posiciona relativo a la top-bar que ahora puede crecer */
+        position: sticky;
+        top: 0;
+        /* Lo movemos de fixed a sticky para que fluya después de la top-bar
+           pero se quede pegado al hacer scroll */
+    }
+
+    .hero {
+        /* Eliminamos el padding-top calculado y dejamos que fluya normalmente */
+        padding-top: 20px;
+    }
+
+    /*AJUSTES PARA EL MENU RESPONSIVE*/
+    .nav-menu {
+        /*POSICIONAR LA BARRA DE MENU VERTICAL*/
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Se posiciona justo debajo del header */
+        right: 0; /* Asegura que esté a la derecha */
+        left: auto; /* Previene conflictos de posicionamiento */
+        display: none;
+
+        /*FORMATEAR*/
+        background-color: var(--color-dark);
+        padding: 10px;
+        width: 50%; /* Aumentamos un poco el ancho para mejor visibilidad */
+        border-radius: 0 0 0 5px;
+    }
+    /*PONER VISIBLE EL ICONO DE HAMBURGUESA*/
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+    /*FORMATEAR LOS ENLACES DEL MENU*/
+    .nav-menu-link {
+        display: block;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        width: 100%;
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    /*Seccion nosotros*/
+    .nosotros-inner {
+        flex-direction: column; 
+        align-items: center;
+        padding: 40px 20px; 
+        gap: 30px; 
+    }
+
+    .col-title h2 {
+        align-items: center; 
+    }
+
+    .col-title h2 span {
+        font-size: 4rem; 
+    }
+
+    .col-title h2 span:nth-child(1) {
+        margin-left: 0;
+    }
+
+    .col-title h2 span:nth-child(2) {
+        margin-left: 20%;
+    }
+
+    .col-text {
+        margin-left: 0;
+        padding: 0 10px; 
+        text-align: justify;
+    }
+
+    .col-text p {
+        font-size: 0.95rem;
+    }
+    /*Seccion servicios*/
+    #servicios .servicios-grid{
+        flex-direction: column;
+    }   
+    .servicios {
+        padding: 60px 20px 80px;
+    }
+    .servicios-grid {
+        align-items: center;
+        gap: 30px;
+    }
+    .servicio {
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 3 / 4; /* Fuerza proporción igual para todos */
+        overflow: hidden;
+        position: relative;
+    }
+  .servicio img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+    /*Seccion proyectos*/
+    .table-responsive table {
+        min-width: 95%; /* Antes era 600px */
+    }
+    .table-responsive th,
+    .table-responsive td {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+    .proyectos {
+        padding: 60px 0;
+    }
+    /*Seccion ubicacion*/
+    .container.empresa-grid{
+        width: 100vw;
+        height: auto;
+        display: grid;
+        place-items: center; 
+    }    
+    
+    .empresa-info p.direccion{
+        transform:scale(0.8);
+    }
+    .ubicacion .direccion {
+        display: flex;
+        justify-content: center;
+    }
+    section.empresa{
+        padding-top: 45px;
+        margin-top: 0;
+    }
+    
+    .empresa-grid {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: center; /* Centra los elementos */
+        gap: 40px;
+        transform: none; /* Reseteamos el transform que tenías */
+    }
+
+    .empresa-info {
+        order: 1;
+        align-items: center;
+    }
+
+    .empresa-logo {
+        max-width: 200px;
+    }
+
+    .empresa-info p {
+        font-size: 0.95rem;
+        max-width: 90%;
+        margin: 0 auto;
+        
+    }
+
+    .ubicacion {
+        order: 2;
+        width: 90%;
+        padding: 35px 25px; /* Más padding vertical y horizontal */
+        box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    }
+
+    .ubicacion .direccion {
+        font-size: 1.4rem; /* Un poco más pequeña la fuente */
+        line-height: 1.4;
+        word-wrap: break-word; /* Permite que el texto largo se parta si es necesario */
+    }
+    
+    /*seccion Testimonios*/
+    #testimonios .testimonios-grid {
+        flex-direction: column;
+    }
+    /*Pie de pagina*/
+    .footer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .footer-block {
+        flex: 1 1 220px;
+        max-width: 300px;
+        text-align: center !important;
+    }
+
+    .footer-block:nth-child(1),
+    .footer-block:nth-child(2) {
+        order: 1; /* Mismo nivel horizontal */
+    }
+
+    .footer-block:nth-child(3) {
+        order: 2;
+        width: 100%;
+    }
+   
+
+    }
+/*Pantalla celular(hasta 576)*/
+@media screen and (max-width: 576px) {
+
+    /* --- MIS AJUSTES GENERALES --- */
+    /* Reducimos el tamaño de los títulos para que quepan mejor */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title, .servicios h2, .proyectos h2, .testimonios h2, .equipo h2 {
+        font-size: 2.2rem;
+    }
+
+    /* Hacemos que la barra superior se vea bien en vertical */
+    .top-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 0;
+        gap: 0.5rem;
+    }
+
+    /* El footer a una sola columna */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* --- TUS AJUSTES ESPECÍFICOS (¡QUE ESTÁN BIEN!) --- */
+    /* Sección Equipo */
+    #equipo .equipo-grid {
+        flex-direction: column;
+    }
+
+    /* Sección Proyectos (Tabla) */
+    .table-responsive {
+        width: 100%;
+        padding: 0 10px; /* Un poco de padding para que no pegue a los bordes */
+    }
+
+    .table-responsive table {
+        display: block;
+        width: 100%;
+    }
+
+    .table-responsive thead {
+        display: none;
+    }
+
+    .table-responsive tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .table-responsive tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 2rem; /* Aumentamos el espacio entre tarjetas */
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra un poco más pronunciada */
+        background: var(--color-white);
+        overflow: hidden;
+    }
+
+    .table-responsive td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--color-gray-lighter);
+        text-align: right;
+    }
+
+    /* Esta parte es para el texto de la derecha (el valor) */
+    .table-responsive td span {
+        flex-shrink: 0; /* Evita que el texto se encoja */
+        margin-left: 15px; /* Añade un espacio entre la etiqueta y el valor */
+    }
+
+    .table-responsive td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--color-gray-dark);
+        margin-right: 10px;
+        text-align: left;
+    }
+
+    .table-responsive td:last-child {
+        border-bottom: none;
+    }
+
+    .table-responsive td[data-label="Proyecto"] {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        font-weight: bold;
+        justify-content: center;
+    }
+
+    .ubicacion .direccion {
+        font-size: 1.3rem; /* Reducción adicional para pantallas pequeñas */
+    }
+    .ubicacion p {
+        font-size: 0.9rem; /* Reduce también el tamaño del texto del horario */
+    }
+}
+
