@@ -250,12 +250,6 @@ la barra de menu, cuando le haga clic en el boton hamburguesa*/
 
 /*FIN DE LOS ESTILOS DE LA BARRA DE NAVEGACION*/
 
-.page-section {
-    padding-top: 130px; /* Suma de la top-bar (40px) + header (70px) + un extra de 20px */
-    padding-bottom: 60px; /* Espacio inferior para que no termine abruptamente en el footer */
-}
-
-
 /* Estilos para la sección "Hero" (principal de bienvenida) */
 .hero {
     padding-top: calc(40px + 70px); /* Relleno superior para compensar la altura de top-bar y header */
@@ -1583,5 +1577,25 @@ Adapatar a varios tamaños de pantalla
     .ubicacion p {
         font-size: 0.9rem; /* Reduce también el tamaño del texto del horario */
     }
+}
+
+.nosotros.page-section,
+.servicios.page-section,
+.proyectos.page-section,
+.empresa.page-section,
+.testimonios.page-section,
+.equipo.page-section,
+.contacto.page-section {
+    padding-top: 150px;
+    padding-bottom: 80px;
+}
+
+/*
+* Adicionalmente, la sección .nosotros tenía una altura de pantalla completa
+* (height: 100vh) que debemos anular en su página individual para que
+* el contenido fluya y el footer no quede flotando.
+*/
+.nosotros.page-section {
+    height: auto;
 }
 
