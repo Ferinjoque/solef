@@ -34,7 +34,7 @@
 ## Instalación
 1. Clona el repositorio en tu máquina local:
    ```
-   git clone [https://github.com/Ferinjoque/solef.git](https://github.com/Ferinjoque/solef.git)
+   git clone https://github.com/Ferinjoque/solef.git
    ```
 2. Navega al directorio del proyecto:
    ```
@@ -67,7 +67,7 @@ Navega a través de las diferentes secciones (Nosotros, Servicios, Proyectos, et
 - **Sin Autenticación:** No existen roles de usuario ni funcionalidades de inicio de sesión.
 
 ## Capturas de Pantalla
-![Página Principal de SOLEF](assets/img/logos/logo-horizontal.png)
+![Página Principal de SOLEF](assets/img/pagina-principal.png)
 
 ## Contribuir
 Las contribuciones son bienvenidas. Si deseas mejorar el proyecto, sigue estos pasos:
