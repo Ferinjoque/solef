@@ -1,84 +1,74 @@
-# SOLEF – Consultoría en Ingeniería
+# SOLEF - Consultoría de Ingeniería
 
-**Versión:** 4.0.0  
+**Versión:** 3.0.0   
 **Fecha:** Julio 2025
 
-> SOLEF ofrece soluciones integrales en ingeniería y consultoría, especializándose en levantamientos topográficos, geodésicos y forestales para garantizar la precisión, innovación y viabilidad de cada proyecto.
+> SOLEF es un proyecto web estático para una consultora de ingeniería, desarrollado puramente con HTML, CSS y JavaScript. El sitio presenta un diseño moderno y adaptable (responsive), y su objetivo es mostrar los servicios, proyectos y equipo de la consultora de una manera profesional y accesible.
 
 ## Tabla de Contenidos
-1. [Características](#características)
-2. [Requisitos](#requisitos)
-3. [Instalación](#instalación)
+1. [Características Principales](#características-principales)
+2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+3. [Estructura del Proyecto](#estructura-del-proyecto)
 4. [Uso](#uso)
-5. [Consideraciones](#consideraciones)
-6. [Limitaciones](#limitaciones)
-7. [Capturas de Pantalla](#capturas-de-pantalla)
-8. [Contribuir](#contribuir)
-9. [Agradecimientos](#agradecimientos)
-10. [Licencia](#licencia)
+5. [Captura de Pantalla](#captura-de-pantalla)
+6. [Agradecimientos](#agradecimientos)
+7. [Licencia](#licencia)
 
-## Características
-- **Sitio Web Informativo:** Presentación completa de la empresa, incluyendo su misión, visión y valores corporativos.
-- **Portafolio de Servicios:** Descripción detallada de los servicios ofrecidos: levantamientos topográficos, geodésicos y forestales.
-- **Galería de Proyectos:** Muestra visual de trabajos realizados en diversas áreas de la ingeniería (civil, forestal, agrónoma).
-- **Equipo Profesional:** Sección dedicada a presentar a los especialistas que forman parte de la consultora.
-- **Testimonios de Clientes:** Opiniones que respaldan la calidad y el profesionalismo del servicio.
-- **Contacto y Ubicación:** Facilita la comunicación directa a través de un formulario y muestra la ubicación física de la oficina.
-- **Diseño Responsivo:** Interfaz completamente adaptable a dispositivos móviles, tabletas y computadoras de escritorio.
-- **Tecnologías**: HTML5, CSS3, JavaScript puro.
+## Características Principales
 
-## Requisitos
-- Un navegador web moderno (Google Chrome, Mozilla Firefox, Safari, Microsoft Edge).
-- No se requieren dependencias de servidor, ya que es un sitio web estático.
+- **Diseño Adaptable (Responsive):** La interfaz se ajusta perfectamente a dispositivos de escritorio, tabletas y móviles.
+- **Navegación Intuitiva:** Un menú de navegación claro y un botón "scroll-up" que facilita el desplazamiento por la página.
+- **Múltiples Secciones:**
+    - **Inicio (`index.html`):** Una página de bienvenida con una imagen heroica y acceso a las principales secciones.
+    - **Nosotros (`nosotros.html`):** Describe la misión y visión de la empresa.
+    - **Servicios (`servicios.html`):** Muestra las áreas de especialización de la consultora: Forestal, Agrícola y Obras Civiles.
+    - **Proyectos (`proyectos.html`):** Presenta una tabla con los proyectos realizados, incluyendo detalles como ubicación, año, estado e inversión.
+    - **Ubicación (`ubicacion.html`):** Proporciona la dirección física, horarios de atención y un mapa de Google Maps integrado.
+    - **Testimonios (`testimonios.html`):** Muestra comentarios y valoraciones de clientes.
+    - **Equipo (`equipo.html`):** Presenta a los ingenieros especialistas del equipo.
+    - **Contacto (`contacto.html`):** Un formulario completo para que los visitantes puedan enviar sus consultas.
+- **Interactividad con JavaScript:** Incluye funcionalidades como un menú de hamburguesa para móviles y un botón para volver al inicio de la página.
+- **Estilo Moderno:** Uso de fuentes de Google Fonts, iconos de Font Awesome y animaciones sutiles para una experiencia de usuario agradable.
 
-## Instalación
-1. Clona el repositorio en tu máquina local:
-   ```
-   git clone https://github.com/Ferinjoque/solef.git
-   ```
-2. Navega al directorio del proyecto:
-   ```
-   cd solef
-   ```
-3. No se requiere ningún paso de compilación o instalación de dependencias.
+## Tecnologías Utilizadas
+
+- **Frontend:**
+    - HTML5
+    - CSS3 (con Propiedades Personalizadas / Variables)
+    - JavaScript (Vanilla JS)
+- **Recursos Externos:**
+    - [Google Fonts](https://fonts.google.com/) (Montserrat y Open Sans)
+    - [Font Awesome](https://fontawesome.com/) (para iconos)
+
+## Estructura del Proyecto
+
+La estructura principal del proyecto es la siguiente:
+```
+/
+├── assets/
+│   ├── css/         # Contiene los estilos CSS
+│   ├── img/         # Almacena todas las imágenes, organizadas por sección
+│   ├── pages/       # Contiene todas las páginas HTML secundarias
+│   └── scripts/     # Archivos JavaScript
+├── index.html       # Página principal
+└── favicon.ico      # Icono del sitio
+```
 
 ## Uso
-Para visualizar el sitio web, simplemente abre el archivo `index.html` en tu navegador de preferencia.
 
-```
-# En Windows
-start index.html
+Para visualizar el sitio web, simplemente abre el archivo `index.html` en cualquier navegador web moderno. No se requiere de un servidor local, ya que es un proyecto estático.
 
-# En macOS
-open index.html
+## Captura de Pantalla
 
-# En Linux
-xdg-open index.html
-```
-Navega a través de las diferentes secciones (Nosotros, Servicios, Proyectos, etc.) utilizando la barra de navegación principal.
+![Página de Inicio](assets/img/pagina-principal.png)
 
-## Consideraciones
-- El sitio web es un proyecto estático. Las interacciones dinámicas, como el envío del formulario de contacto, son solo visuales y no están conectadas a un backend.
-- El contenido (textos, imágenes y datos de proyectos) ha sido creado para simular una consultora de ingeniería real en el contexto de un proyecto académico.
-
-## Limitaciones
-- **Sin Backend:** El formulario de contacto no procesa ni envía datos. Para una implementación en producción, se necesitaría integrar un servicio de backend o una API de terceros (como EmailJS o Formspree).
-- **Gestión de Contenido Manual:** No cuenta con un Sistema de Gestión de Contenidos (CMS). Todas las actualizaciones de texto, imágenes o proyectos deben realizarse directamente en los archivos HTML.
-- **Sin Autenticación:** No existen roles de usuario ni funcionalidades de inicio de sesión.
-
-## Capturas de Pantalla
-![Página Principal de SOLEF](assets/img/pagina-principal.png)
-
-## Contribuir
-Las contribuciones son bienvenidas. Si deseas mejorar el proyecto, sigue estos pasos:
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tu mejora (`git checkout -b feature/nueva-mejora`).
-3. Realiza tus cambios y haz commit (`git commit -m "Añade nueva función X"`).
-4. Empuja tus cambios a tu fork (`git push origin feature/nueva-mejora`).
-5. Abre un Pull Request hacia la rama `main` del repositorio original.
 
 ## Agradecimientos
-- **Desarrollo y Diseño:** Rosa Quispe y Marjoret Lopez, como parte del proyecto final para el curso de Taller de Programación Web.
+
+- **Equipo de desarrollo**:
+    - Marjoret Lopez
+    - Rosa Quispe
 
 ## Licencia
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+Este proyecto está bajo la Licencia MIT.
